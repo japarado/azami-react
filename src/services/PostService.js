@@ -12,7 +12,8 @@ class PostService
 		}
 		catch(e)
 		{
-			console.log(e);
+			console.log("An error has occurred");
+			// console.log(e);
 		}
 		return posts;
 	}

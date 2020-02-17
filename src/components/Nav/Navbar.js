@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { AuthService } from "../../services/ServiceIndex";
-
 
 const Navbar = () => 
 {
@@ -18,11 +17,19 @@ const Navbar = () =>
 					</li>
 				</ul>
 				<ul className="navbar-nav ml-auto">
+					<NavLink activeClassName="active" className="btn btn-outline-primary text-white mx-1 mb-2" to="/login">Log in</NavLink>
+					<NavLink activeClassName="active" className="btn btn-outline-info text-white mx-1 mb-2" to="/register">Register</NavLink>
 					<NavLink activeClassName="active" className="btn btn-outline-warning text-white mx-1 mb-2" to="/notifications">Notifications</NavLink>
+					<NavLink onClick={ clickLogout } activeClassName="active" className="btn btn-outline-danger text-white mx-1 mb-2" to="/auth/logout">Log out</NavLink>
 				</ul>
 			</div>
 		</nav>
 	);
 };
+
+async function clickLogout()
+{
+	await AuthService.logout();
+}
 
 export default Navbar;

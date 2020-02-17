@@ -20,23 +20,33 @@ apiservice.interceptors.request.use((config) =>
 	return config;
 });
 
+apiservice.interceptors.response.use((res) => 
+{
+	return res; 
+}, (err) => 
+{
+	console.log(err); return Promise.reject(err); 
+});
+
+// App-level localStorage
+
 // Auth utilities
 /**
  * Stores user details in localStorage
  *
- * @param {object} userDetails - Object representing a user 
+ * @param {object} userDetails Object representing a user 
  * @returns {void}
  */
-function saveUserDetails(userDetails)
+function saveAuthUser(userDetails)
 {
 	localStorage.setItem("authUser", JSON.stringify(userDetails));
-	localStorage.setItem("isLoggedIn", true);
+	localStorage.setItem("isAuth", true);
 }
 
 /**
  * Retrieves the current auth user 
  *
- * @param {void}
+ * @param {null}
  * @returns {object} - The user info stored in localStorage
  */ 
 function getAuthUser()
@@ -45,14 +55,28 @@ function getAuthUser()
 }
 
 /**
- * Determines whether user is currently logged in 
+ * Determines whether user is currently logged in.
  *
- * @param {void}
+ * @param {null}
  * @returns {boolean} - Is user logged in? 
  */ 
 function isLoggedIn()
 {
-	return localStorage.getItem("isLoggedIn");
+	const entryValue = localStorage.getItem("isAuth");
+	return entryValue && entryValue.toString().toLowerCase() === "true";
 }
 
-export { apiservice, saveUserDetails, getAuthUser, isLoggedIn };
+/** 
+ * Deletes the "isAuth" and "authUser" records from localStorage 
+ *
+ * @param { null } 
+ * @returns { null } 
+ */
+function deleteAuthUser()
+{
+	// localStorage.clear();
+	localStorage.removeItem("isAuth");
+	localStorage.removeItem("authUser");
+}
+
+export { apiservice, saveAuthUser, getAuthUser, isLoggedIn, deleteAuthUser };

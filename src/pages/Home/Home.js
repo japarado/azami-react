@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { AuthService, PostService } from "../../services/ServiceIndex";
 import PostList from "../../components/Post/PostList";
+import {apiservice} from "../../utils";
 
 class Home extends Component 
 {
@@ -15,7 +16,8 @@ class Home extends Component
 
 	async componentDidMount()
 	{
-		this.setState({ posts: await PostService.index() });
+		const posts = await PostService.index();
+		console.log(posts)
 	}
 
 	render()

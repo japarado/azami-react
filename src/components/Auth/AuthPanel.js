@@ -1,6 +1,6 @@
-import React, { Component, useState, Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { NavLink, withRouter, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Login from "./Login/Login";
 import Register from "./Register/Register";
 
@@ -72,7 +72,7 @@ class AuthPanel extends Component
 	/**
 	 * Returns either React.Component.Login or React.Component.Register depending on the current path
 	 *
-	 * @param {string} pathname The current path (URL)
+	 * @param {string} path The current path (URL)
 	 * @return {React.Component} The component to render. Either <Login/> or <Register/>.
 	 */
 	getComponentToRender(path) 
@@ -99,23 +99,3 @@ AuthPanel.propTypes = {
 };
 
 export default AuthPanel;
-
-
-function getCookie(cname) 
-{
-	const name = cname + "=";
-	const ca = document.cookie.split(";");
-	for(let i = 0; i < ca.length; i++) 
-	{
-		let c = ca[i];
-		while (c.charAt(0) == " ") 
-		{
-			c = c.substring(1);
-		}
-		if (c.indexOf(name) == 0) 
-		{
-			return c.substring(name.length, c.length);
-		}
-	}
-	return "";
-}

@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "../../pages/Home/Home";
-import Register from "../Auth/Register/Register";
 import AuthPanel from "../Auth/AuthPanel";
 
 const Routes = () => 

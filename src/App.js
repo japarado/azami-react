@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Nav from "./components/Nav/Nav";
 import Routes from "./components/Nav/Routes";
 
+import { getAuthUser, isLoggedIn } from "./utils";
+
 class App extends Component
 {
 	state = {
@@ -10,8 +12,7 @@ class App extends Component
 
 	componentDidMount()
 	{
-		let authUser = JSON.parse(localStorage.getItem("authUser"));
-		console.log(authUser)
+		console.log(isLoggedIn());
 	}
 
 	render()

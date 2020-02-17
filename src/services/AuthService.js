@@ -1,4 +1,4 @@
-import {apiservice} from "../utils";
+import {apiservice, saveAuthUser, deleteAuthUser, isLoggedIn, getAuthUser } from "../utils";
 
 class AuthService 
 {
@@ -7,26 +7,15 @@ class AuthService
 		let user;
 		try 
 		{
-			res = await apiservice.post("/auth/login", { email, password });
-			user = res.data.posts;
+			const res = await apiservice.post("/auth/login", { email, password });
+			const user = res.data.user;
+			saveAuthUser(user)
 		}
 		catch(e)
 		{
-			console.error(e)
+			console.error(e);
 		}
 		return user;
-		// let user;
-		// try
-		// {
-		// 	res = await apiservice.post("/auth/login", { email, password });
-		// 	localStorage.setItem("authUser", JSON.stringify(res.data.user));
-		// 	localStorage.setItem("isLoggedIn", true);
-		// }
-		// catch (e)
-		// {
-		// 	res = e;
-		// }
-		// return res;
 	}
 
 	static async register(email, password)
@@ -53,8 +42,7 @@ class AuthService
 		try 
 		{
 			res = await apiservice.delete("/auth/logout");
-			localStorage.removeItem("authUser");
-			localStorage.setItem("isLoggedIn", false);
+			deleteAuthUser();
 		}
 		catch(e)
 		{
@@ -68,11 +56,17 @@ class AuthService
 
 	static async me()
 	{
-		let res;
+		let user;
 		try 
 		{
-
+			const res = await apiservice.get("/auth/me");
+			deleteAuthUser();
 		}
+		catch(e)
+		{
+			console.error(e);
+		}
+		return user;
 	}
 }
 
