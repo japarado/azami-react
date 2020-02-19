@@ -9,15 +9,15 @@ const Routes = (props) =>
 	return(
 		<Switch>
 			<Route exact path="/" component={ Home }/>
-			<Route exact path="/login" render={ (props) => <AuthPanel submit={props.handleLogin}/> }/>
-			<Route exact path="/register" render={ (props) => <AuthPanel submit={props.handleLogin}/> }/>
+			<Route exact path="/login" render={ (props) => <AuthPanel handleLogin={props.handleLogin}/> }/>
+			<Route exact path="/register" render={ (props) => <AuthPanel handleRegister={props.handleRegister}/> }/>
 		</Switch>
 	);
 };
 
 Routes.propTypes = {
 	handleLogin: PropTypes.func,
-	handlRegister: PropTypes.func,
+	handleRegister: PropTypes.func,
 };
 
 export default Routes;

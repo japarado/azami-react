@@ -26,7 +26,7 @@ class App extends Component
 				<Nav isAuth={ this.state.isAuth }/>
 				<main>
 					<div className="container-fluid">
-						<Routes/>
+						<Routes handleLogin={ this.handleLogin } handlRegister={ this.handleRegister }/>
 					</div>
 				</main>
 			</div>
@@ -35,11 +35,14 @@ class App extends Component
 
 	handleLogin = (_, username, password) => 
 	{
+		console.log("LOGIN");
+		console.log({ username, password });
 	}
 
-	handleLogin = (_username, password, passwordConfirmation) => 
+	handleRegister = (_, username, password, passwordConfirmation) => 
 	{
-
+		console.log("REGISTER");
+		console.log({ username, password, passwordConfirmation });
 	}
 }
 
