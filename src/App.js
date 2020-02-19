@@ -17,19 +17,6 @@ class App extends Component
 		password: "password",
 		passwordConfirmation: "",
 	}
-
-	async componentDidMount()
-	{
-		const res = await AuthService.me();
-		if(res.ok === true)
-		{
-			alert('ok')
-		}
-		else 
-		{
-			alert(false)
-		}
-	}
 	
 
 	render()

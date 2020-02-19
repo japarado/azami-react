@@ -8,12 +8,6 @@ import { AuthService, PostService } from "../../services/ServiceIndex";
 
 class AuthPanel extends Component 
 {
-	state = {
-		email: "person@site.com",
-		password: "password",
-		passwordConfirmation: "",
-	}
-
 	render()
 	{
 		const componentToRender = this.getComponentToRender(this.props.location.pathname);
@@ -42,14 +36,15 @@ class AuthPanel extends Component
 	}
 
 	// Event Handlers 
-	handleLogin = async () =>
+	handleLogin = async (_, email, password) =>
 	{
-		await AuthService.login(this.state.email, this.state.password);
+		console.log({ email, password });
 	}
 
-	handlRegister = async () =>
+	handlRegister = async (_, email, password) =>
 	{
-		console.log("Registering...");
+		console.log("this is the registe rroute")
+		console.log({ email, password });
 	}
 
 	handleChange = (e) => 
@@ -81,10 +76,10 @@ class AuthPanel extends Component
 		switch(path)
 		{
 		case "/login":
-			componentToRender = <Login change={ this.handleChange } submit={ this.handleLogin } {...this.state}/>;
+			componentToRender = <Login  submit={ this.handleLogin }/>;
 			break;
 		case "/register":
-			componentToRender = <Register change={ this.handleChange } submit={ this.handlRegister }/>;
+			componentToRender = <Register submit={ this.handlRegister }/>;
 			break;
 		default:
 			componentToRender = null;

@@ -1,15 +1,19 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 
 const Register = (props) => 
 {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [passwordConfirmation, setPasswordConfirmation] = useState("");
+
 	return(
 		<Fragment>
 			<div className="form-group">
-				<input type="email" className="form-control" id="email" name="email" placeholder="Email" value={ props.email } onChange={ props.change }/>
+				<input type="email" className="form-control" id="email" name="email" placeholder="Email" value={ email } onChange={ (e) => setEmail(e.target.value) }/>
 			</div>
 			<div className="form-group">
-				<input type="password" className="form-control" id="password" name="password" placeholder="Password" value={ props.password } onChange={ props.change }/>
+				<input type="password" className="form-control" id="password" name="password" placeholder="Password" value={ password } onChange={ (e) => setPassword(e.target.value) }/>
 			</div>
 			<div className="form-group">
 				<input 
@@ -17,23 +21,19 @@ const Register = (props) =>
 					className="form-control" 
 					id="passwordConfirmation"
 					name="passwordConfirmation"
-					value={ props.passwordConfirmation }
+					value={ passwordConfirmation }
 					placeholder="Confirm Password"
-					onChange={ props.change }/>
+					onChange={ (e) => setPasswordConfirmation(e.target.value) }/>
 			</div>
 			<div className="form-group">
-				<button className="btn btn-info form-control" onClick={ props.submit }>Register</button>
+				<button className="btn btn-info form-control" onClick={ (e) => props.submit(e, email, password, passwordConfirmation) }>Register</button>
 			</div>
 		</Fragment>
 	);
 };
 
 Register.propTypes = {
-	change: PropTypes.func,
 	submit: PropTypes.func,
-	email: PropTypes.string,
-	password: PropTypes.string,
-	passwordConfirmation: PropTypes.string
 };
 
 export default Register;
