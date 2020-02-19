@@ -25,9 +25,13 @@ apiservice.interceptors.request.use((config) =>
 
 apiservice.interceptors.response.use((res) => 
 {
+	res.ok = true;
 	return res; 
 }, (err) => 
 {
+	console.log("IN UTILS")
+	console.log(err)
+	console.log("END UTILS")
 	const errorResponse = {
 		status: err.response.status,
 		statusText: err.response.statusText,

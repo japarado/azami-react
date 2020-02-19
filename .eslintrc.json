@@ -60,6 +60,9 @@
 				"object-curly-spacing": [
 					"warn",
 					"always"
+				],
+				"react/jsx-max-props-per-line":[
+					"warn"
 				]
     },
 		"parser": "babel-eslint"

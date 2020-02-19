@@ -1,21 +1,22 @@
-import {apiservice, saveAuthUser, deleteAuthUser, isLoggedIn, getAuthUser } from "../utils";
+import { apiservice, saveAuthUser, deleteAuthUser, isLoggedIn, getAuthUser } from "../utils";
 
 class AuthService 
 {
 	static async login(email, password)
 	{
-		let user;
+		let res;
 		try 
 		{
-			const res = await apiservice.post("/auth/login", { email, password });
-			const user = res.data.user;
-			saveAuthUser(user)
+			res = await apiservice.post("/auth/login", { email, password });
 		}
 		catch(e)
 		{
-			console.error(e);
+			res = e;
 		}
-		return user;
+		finally
+		{
+			return res;
+		}
 	}
 
 	static async register(email, password)
@@ -42,11 +43,10 @@ class AuthService
 		try 
 		{
 			res = await apiservice.delete("/auth/logout");
-			deleteAuthUser();
 		}
 		catch(e)
 		{
-			console.error(e);
+			res = e;
 		}
 		finally
 		{
@@ -56,16 +56,19 @@ class AuthService
 
 	static async me()
 	{
-		let result;
+		let res;
 		try 
 		{
-			const res = await apiservice.get("/auth/me");
+			res = await apiservice.get("/auth/me");
 		}
 		catch(e)
 		{
-			result = e;
+			res = e;
 		}
-		return result;
+		finally
+		{
+			return res;
+		}
 	}
 }
 

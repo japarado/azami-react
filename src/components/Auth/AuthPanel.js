@@ -1,17 +1,13 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import Login from "./Login/Login";
 import Register from "./Register/Register";
 import { withRouter } from "react-router-dom";
 
-import { AuthService, PostService } from "../../services/ServiceIndex";
-
 const AuthPanel = (props) => 
 {
-	console.log(props)
-	// const componentToRender = this.getComponentTorender(props.location.pathname, props);
-	const componentToRender = null;
+	const componentToRender = getComponentToRender(props.location.pathname, props);
 	return(
 		<Fragment>
 			<div className="d-flex justify-content-center">
@@ -35,10 +31,15 @@ const AuthPanel = (props) =>
 		</Fragment>
 	);
 };
+
 /**
 	 * Returns either React.Component.Login or React.Component.Register depending on the current path
 	 *
 	 * @param {string} path The current path (URL)
+	 * @param {object} props Component props
+	 * @param {func} props.handleLogin Login callback event handler
+	 * @param {func} props.handleRegister Register callback event handler
+	 *
 	 * @return {React.Component} The component to render. Either <Login/> or <Register/>.
 	 */
 function getComponentToRender(path, props)
@@ -50,7 +51,7 @@ function getComponentToRender(path, props)
 		componentToRender = <Login  submit={ props.handleLogin }/>;
 		break;
 	case "/register":
-		componentToRender = <Register submit={ props.handlRegister }/>;
+		componentToRender = <Register submit={ props.handleRegister }/>;
 		break;
 	default:
 		componentToRender = null;

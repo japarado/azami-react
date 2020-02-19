@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 const Login = (props) => 
 {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+	const [email, setEmail] = useState("person@site.com");
+	const [password, setPassword] = useState("password");
 	return(
 		<Fragment>
 			<div className="form-group">
