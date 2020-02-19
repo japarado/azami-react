@@ -5,11 +5,6 @@ import {apiservice} from "../../utils";
 
 class Home extends Component 
 {
-	constructor(props)
-	{
-		super(props);
-	}
-
 	state = {
 		posts: []
 	};
@@ -17,7 +12,7 @@ class Home extends Component
 	async componentDidMount()
 	{
 		const posts = await PostService.index();
-		console.log(posts)
+		this.setState({ posts })
 	}
 
 	render()

@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Home from "../../pages/Home/Home";
 import AuthPanel from "../Auth/AuthPanel";
 
-const Routes = () => 
+const Routes = (_) => 
 {
 	return(
 		<Switch>

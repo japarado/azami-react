@@ -1,8 +1,14 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { AuthService } from "../../services/ServiceIndex";
 
-const Navbar = () => 
+import NavLinkGroup from "./NavbarLinks/NavLinkGroup";
+import UniversalNavLink from "./NavbarLinks/UniversalNavLink";
+import GuestNavLink from "./NavbarLinks/GuestNavLink";
+import PrivateNavLink from "./NavbarLinks/PrivateNavLink";
+
+const Navbar = (props) => 
 {
 	return(
 		<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -11,25 +17,47 @@ const Navbar = () =>
 				<span className="navbar-toggler-icon"></span>
 			</button>
 			<div className="collapse navbar-collapse" id="navbarNav">
-				<ul className="navbar-nav">
-					<li className="nav-item active">
-						<NavLink to="/" className="nav-link">Home</NavLink>
-					</li>
-				</ul>
-				<ul className="navbar-nav ml-auto">
-					<NavLink activeClassName="active" className="btn btn-outline-primary text-white mx-1 mb-2" to="/login">Log in</NavLink>
-					<NavLink activeClassName="active" className="btn btn-outline-info text-white mx-1 mb-2" to="/register">Register</NavLink>
-					<NavLink activeClassName="active" className="btn btn-outline-warning text-white mx-1 mb-2" to="/notifications">Notifications</NavLink>
-					<NavLink onClick={ clickLogout } activeClassName="active" className="btn btn-outline-danger text-white mx-1 mb-2" to="/auth/logout">Log out</NavLink>
-				</ul>
+
+				<NavLinkGroup position="left" isAuth={ props.isAuth }>
+
+					<UniversalNavLink>
+						<NavLink to="/" activeClassName="active" className="nav-link">Home</NavLink>
+					</UniversalNavLink>
+
+					<PrivateNavLink>
+						<NavLink to="/my-posts" activeClassName="active" className="nav-link">My Posts</NavLink>
+					</PrivateNavLink>
+				</NavLinkGroup>
+
+				<NavLinkGroup position="right" isAuth={ props.isAuth }>
+					<GuestNavLink>
+						<NavLink activeClassName="active" className="btn btn-outline-primary text-white mx-1 mb-2" to="/login">Log in</NavLink>
+					</GuestNavLink>
+					<GuestNavLink>
+						<NavLink activeClassName="active" className="btn btn-outline-info text-white mx-1 mb-2" to="/register">Register</NavLink>
+					</GuestNavLink>
+
+					<PrivateNavLink>
+						<NavLink activeClassName="active" className="btn btn-outline-danger text-white mx-1 mb-2" to="/auth/logout">Log out</NavLink>
+					</PrivateNavLink>
+				</NavLinkGroup>
+
+				{/* <NavLinkGroup position="right" isAuth={ props.isAuth }> */}
+				{/* 	<NavLink activeClassName="active" className="btn btn-outline-primary text-white mx-1 mb-2" to="/login">Log in</NavLink> */}
+				{/* </NavLinkGroup> */}
+				{/* <ul className="navbar-nav ml-auto"> */}
+				{/* <NavLink activeClassName="active" className="btn btn-outline-primary text-white mx-1 mb-2" to="/login">Log in</NavLink> */}
+				{/* <NavLink activeClassName="active" className="btn btn-outline-info text-white mx-1 mb-2" to="/register">Register</NavLink> */}
+				{/* <NavLink activeClassName="active" className="btn btn-outline-warning text-white mx-1 mb-2" to="/notifications">Notifications</NavLink> */}
+				{/* <NavLink onClick={ clickLogout } activeClassName="active" className="btn btn-outline-danger text-white mx-1 mb-2" to="/auth/logout">Log out</NavLink> */}
+				{/* </ul> */}
 			</div>
 		</nav>
 	);
 };
 
-async function clickLogout()
-{
-	await AuthService.logout();
-}
+Navbar.propTypes = {
+	isAuth: PropTypes.bool
+};
 
 export default Navbar;

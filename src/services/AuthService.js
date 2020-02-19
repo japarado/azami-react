@@ -56,17 +56,16 @@ class AuthService
 
 	static async me()
 	{
-		let user;
+		let result;
 		try 
 		{
 			const res = await apiservice.get("/auth/me");
-			deleteAuthUser();
 		}
 		catch(e)
 		{
-			console.error(e);
+			result = e;
 		}
-		return user;
+		return result;
 	}
 }
 
