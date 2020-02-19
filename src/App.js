@@ -33,7 +33,12 @@ class App extends Component
 		);
 	}
 
-	handleLogin = () => {
+	handleLogin = (_, username, password) => 
+	{
+	}
+
+	handleLogin = (_username, password, passwordConfirmation) => 
+	{
 
 	}
 }

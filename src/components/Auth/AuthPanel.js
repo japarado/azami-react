@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import Login from "./Login/Login";
 import Register from "./Register/Register";
+import { withRouter } from 'react-router-dom';
 
 import { AuthService, PostService } from "../../services/ServiceIndex";
 
@@ -93,4 +94,4 @@ AuthPanel.propTypes = {
 	location: PropTypes.any
 };
 
-export default AuthPanel;
+export default withRouter(AuthPanel);
