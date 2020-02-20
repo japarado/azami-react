@@ -9,6 +9,7 @@ dependencies:
   prop-types: 15.7.2
   qs: 6.9.1
   react: 16.12.0
+  react-content-loader: 5.0.1_react@16.12.0
   react-dom: 16.12.0_react@16.12.0
   react-loading-overlay: 1.0.1_react-dom@16.12.0+react@16.12.0
   react-router-dom: 5.1.2_react@16.12.0
@@ -8828,6 +8829,14 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-OfBnObtnGgLGfweORmdZbyEz+3dgVePQBb3zipiaDsMHV1NpWm0rDFYIVXFV/AK+x4VIIfWHhrdMIeoTLyRr2g==
+  /react-content-loader/5.0.1_react@16.12.0:
+    dependencies:
+      react: 16.12.0
+    dev: false
+    peerDependencies:
+      react: ^16.0.0
+    resolution:
+      integrity: sha512-id1zp9jcB+SfJV9Vrjpmk+Qt+zJ3owYiIAGkHy8V4Sffvcyr6zmZbai8qT+Y3bPrvnH3kWvr9iO5giC5g9cYKQ==
   /react-dev-utils/10.2.0:
     dependencies:
       '@babel/code-frame': 7.8.3
@@ -11266,6 +11275,7 @@ specifiers:
   prop-types: ^15.7.2
   qs: ^6.9.1
   react: ^16.12.0
+  react-content-loader: ^5.0.1
   react-dom: ^16.12.0
   react-loading-overlay: ^1.0.1
   react-router-dom: ^5.1.2

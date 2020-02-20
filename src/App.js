@@ -4,10 +4,6 @@ import Routes from "./components/Nav/Routes";
 
 import { AuthService } from "./services/ServiceIndex";
 
-import ClipLoader from "react-spinners/ClipLoader";
-import Backdrop from "./components/UI/Backdrop/Backdrop";
-import LoadingOverlay from "react-loading-overlay";
-
 class App extends Component
 {
 	state = {
