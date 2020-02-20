@@ -13,8 +13,10 @@ const Modal = (props) =>
 	};
 	return(
 		<Fragment>
-			<Backdrop show={ props.show } click={ props.dismiss }/>
-			<div className="Modal" style={ style }>
+			<Backdrop show={ props.show }
+				click={ props.dismiss }/>
+			<div className="Modal"
+				style={ style }>
 				<div className="modal-header">
 					<h5 className="modal-title">{ props.title ? props.title : "Are you sure?" }</h5>
 				</div>
@@ -22,8 +24,10 @@ const Modal = (props) =>
 					{ props.body ? props.body : "" }
 				</div>
 				<div className="modal-footer">
-					<button className="btn btn-secondary" onClick={ props.dismiss }>Cancel</button>
-					<button className="btn btn-primary" onClick={ props.confirm }>Confirm</button>
+					<button className="btn btn-secondary"
+						onClick={ props.dismiss }>Cancel</button>
+					<button className="btn btn-primary"
+						onClick={ props.confirm }>Confirm</button>
 				</div>
 			</div>
 		</Fragment>
@@ -35,8 +39,11 @@ Modal.propTypes = {
 	body: PropTypes.string,
 	show: PropTypes.bool,
 	dismiss: PropTypes.func,
-	children: PropTypes.node,
-	handleConfirmDelete: PropTypes.func
+	confirm: PropTypes.func,
+	// children: PropTypes.oneOfType(
+	// 	PropTypes.node,
+	// 	PropTypes.arrayOf(PropTypes.node)
+	// ),
 };
 
 export default Modal;

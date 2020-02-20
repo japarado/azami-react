@@ -1,8 +1,10 @@
 import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
+import { withRouter } from 'react-router-dom';
 
 const Login = (props) => 
 {
+	console.log("Mounting login comp")
 	const [email, setEmail] = useState("person@site.com");
 	const [password, setPassword] = useState("password");
 	return(

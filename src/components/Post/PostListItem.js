@@ -9,16 +9,17 @@ const PostListItem = (props) =>
 			<h1 className="text-center">{ `${props.title} - ${props.id}` }</h1>
 			<p>{ props.body }</p>
 
-			{/* Render post controls if specified by props */}
-			<div className="d-flex justify-content-center p-2">
-				<PostControls 
-					clickDelete={ (e) => props.clickDelete(e, props.id, props.title, props.user_id)}
-					clickUpdate={(e) => props.clickUpdate(e, props.id)}
-				/>
-			</div>
+			{ props.children }
+			{/* Render post controls */}
+			{/* <div className="d-flex justify-content-center p-2"> */}
+			{/* 	<PostControls */} 
+			{/* 		clickDelete={ (e) => props.clickDelete(e, props.id, props.title, props.user_id)} */}
+			{/* 		clickUpdate={(e) => props.clickUpdate(e, props.id)} */}
+			{/* 	/> */}
+			{/* </div> */}
 		</li>
 	);
-}
+};
 
 PostListItem.propTypes = {
 	id: PropTypes.number,
@@ -27,7 +28,10 @@ PostListItem.propTypes = {
 	clickDelete: PropTypes.func,
 	clickUpdate: PropTypes.func,
 	user_id: PropTypes.number,
-	children: PropTypes.node
+	children: PropTypes.oneOfType([
+		PropTypes.node,
+		PropTypes.arrayOf(PropTypes.node)
+	])
 };
 
 export default PostListItem;

@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
+
 import Nav from "./components/Nav/Nav";
 import Routes from "./components/Nav/Routes";
+import { withRouter } from "react-router-dom";
 
 import { AuthService } from "./services/ServiceIndex";
 
@@ -32,35 +35,37 @@ class App extends Component
 	// Event handlers
 	handleLogin = async (_, email, password) => 
 	{
-		const checkIfLoggedInCallback = async() => 
+		const res = await AuthService.login(email, password);
+		if(res.ok)
 		{
-			const res = await AuthService.login(email, password);
-			const user = res.data.user;
-			this.setAuthUserHelper(user.id, user.email);
-		};
-		this.loadingAnimationProcessHelper(checkIfLoggedInCallback);
-		// this.setState({ isLoading: true });
-		// const res = await AuthService.login(email, password);
-		// const user = res.data.user;
-		// this.setAuthUserHelper(user.id, user.email);
-		// this.setState({ isLoading: false });
-		// this.loadingAnimationProcessHelper(async () => 
-		// {
-		// 	const res = await AuthService.login(email, password);
-		// 	const user = res.data.user;
-		// 	this.setAuthUserHelper(user.id, user.email);
-		// });
+			this.setState({ isAuth: true, email, password });
+			this.props.history.push("/");
+		}
 	}
 
-	handleRegister = (_, email, password, passwordConfirmation) => 
+	handleRegister = async (_, email, password, passwordConfirmation) => 
 	{
-		console.log("REGISTER");
-		console.log({ email, password, passwordConfirmation });
+		const res = await AuthService.register(email, password);
+		if(res.ok)
+		{
+			this.setState({ isAuth: true, email, password });
+			this.props.history.push("/");
+		}
 	}
 
-	handleLogout = async (_) => 
+	handleLogout = async () => 
 	{
 		const res = await AuthService.logout();
+		console.log(res);
+		if(res.ok)
+		{
+			this.setState({ isAuth: false, id: NaN, email: "person@site.com" });
+			this.props.history.push("/");
+		}
+		else 
+		{
+			alert("Log out has failed...");
+		}
 	}
 
 	// Helper functions
@@ -90,12 +95,15 @@ class App extends Component
 	{
 		return (
 			<Fragment>
-				<Nav isAuth={ this.state.isAuth }/>
+				<Nav isAuth={ this.state.isAuth }
+					handleLogout={ this.handleLogout }/>
 				<main>
 					<div className="container-fluid">
-						<Routes handleLogin={ this.handleLogin }
+						<Routes 
+							isAuth={ this.state.isAuth }
+							handleLogin={ this.handleLogin }
 							handleRegister={ this.handleRegister }
-							handleLogout={ this.handleLogout }/>
+						/>
 					</div>
 				</main>
 			</Fragment>
@@ -103,4 +111,8 @@ class App extends Component
 	}
 }
 
-export default App;
+App.propTypes = {
+	history: PropTypes.object
+};
+
+export default withRouter(App);

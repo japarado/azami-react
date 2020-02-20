@@ -114,7 +114,7 @@ function deleteAuthUser()
  */
 function shouldShowLink(navlink, isAuth) 
 {
-	return (navlink.type === PrivateNavLink && isAuth) || (navlink.type === GuestNavLink && !isAuth) || (navlink.type === UniversalNavLink);
+	return (navlink.type === PrivateNavLink && isAuth) || (navlink.type === GuestNavLink && !isAuth) || (navlink.type === UniversalNavLink); 
 }
 
 /**

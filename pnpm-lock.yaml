@@ -11,6 +11,7 @@ dependencies:
   react: 16.12.0
   react-content-loader: 5.0.1_react@16.12.0
   react-dom: 16.12.0_react@16.12.0
+  react-draft-wysiwyg: 1.14.4_react-dom@16.12.0+react@16.12.0
   react-loading-overlay: 1.0.1_react-dom@16.12.0+react@16.12.0
   react-router-dom: 5.1.2_react@16.12.0
   react-scripts: 3.4.0
@@ -2864,6 +2865,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-qOhPa/Fj7s6TY8H8esGu5QNpMMQxz79h+urzrNYN6mn+9BnxlDGf5QZ+XeCDsxSjPqsSR56XOZOJmpeurnLMeg==
+  /classnames/2.2.6:
+    dev: false
+    resolution:
+      integrity: sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
   /clean-css/4.2.3:
     dependencies:
       source-map: 0.6.1
@@ -3809,6 +3814,13 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
+  /draftjs-utils/0.10.2:
+    dev: false
+    peerDependencies:
+      draft-js: ^0.11.x
+      immutable: 3.x.x || 4.x.x
+    resolution:
+      integrity: sha512-EstHqr3R3JVcilJrBaO/A+01GvwwKmC7e4TCjC7S94ZeMh4IVmf60OuQXtHHpwItK8C2JCi3iljgN5KHkJboUg==
   /duplexer/0.1.1:
     dev: false
     resolution:
@@ -5162,6 +5174,13 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-fHwmKQ+GzhlqdxEtwrqLT7MSuheiA+rif5/dZgbz3GjoMXJzcRzy1L9NXoiiyxrnap+q5guSiv8Tz5lrh9g42g==
+  /html-to-draftjs/1.5.0:
+    dev: false
+    peerDependencies:
+      draft-js: ^0.10.x || ^0.11.x
+      immutable: 3.x.x || 4.x.x
+    resolution:
+      integrity: sha512-kggLXBNciKDwKf+KYsuE+V5gw4dZ7nHyGMX9m0wy7urzWjKGWyNFetmArRLvRV0VrxKN70WylFsJvMTJx02OBQ==
   /html-webpack-plugin/4.0.0-beta.11_webpack@4.41.5:
     dependencies:
       html-minifier-terser: 5.0.4
@@ -6578,6 +6597,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
+  /linkify-it/2.2.0:
+    dependencies:
+      uc.micro: 1.0.6
+    dev: false
+    resolution:
+      integrity: sha512-GnAl/knGn+i1U/wjBz3akz2stz+HrHLsxMwHQGofCDfPvlf+gDKN58UtfmUquTY4/MXeE2x7k19KQmeoZi94Iw==
   /load-json-file/2.0.0:
     dependencies:
       graceful-fs: 4.2.3
@@ -8880,6 +8905,23 @@ packages:
       react: ^16.0.0
     resolution:
       integrity: sha512-LMxFfAGrcS3kETtQaCkTKjMiifahaMySFDn71fZUNpPHZQEzmk/GiAeIT8JSOrHB23fnuCOMruL2a8NYlw+8Gw==
+  /react-draft-wysiwyg/1.14.4_react-dom@16.12.0+react@16.12.0:
+    dependencies:
+      classnames: 2.2.6
+      draftjs-utils: 0.10.2
+      html-to-draftjs: 1.5.0
+      linkify-it: 2.2.0
+      prop-types: 15.7.2
+      react: 16.12.0
+      react-dom: 16.12.0_react@16.12.0
+    dev: false
+    peerDependencies:
+      draft-js: ^0.10.x || ^0.11.x
+      immutable: 3.x.x || 4.x.x
+      react: 0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x
+      react-dom: 0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x
+    resolution:
+      integrity: sha512-aV7pEc91tO4r0vv40f4NkWBZhC0PnmHvQBRVAo8egfHXOm5C6MvDhYysC4Aab219zir7GL79xIZh1hz0Z6sQLQ==
   /react-error-overlay/6.0.6:
     dev: false
     resolution:
@@ -10535,6 +10577,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+  /uc.micro/1.0.6:
+    dev: false
+    resolution:
+      integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==
   /unicode-canonical-property-names-ecmascript/1.0.4:
     dev: false
     engines:
@@ -11277,6 +11323,7 @@ specifiers:
   react: ^16.12.0
   react-content-loader: ^5.0.1
   react-dom: ^16.12.0
+  react-draft-wysiwyg: ^1.14.4
   react-loading-overlay: ^1.0.1
   react-router-dom: ^5.1.2
   react-scripts: 3.4.0

@@ -63,6 +63,9 @@
 				],
 				"react/jsx-max-props-per-line":[
 					"warn"
+				],
+				"react/no-unused-prop-types": [
+					"warn"
 				]
     },
 		"parser": "babel-eslint"

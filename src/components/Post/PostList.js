@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import PostListItem from "./PostListItem";
 import Modal from "../UI/Modal/Modal";
+import PostControls from "./PostControls";
 
 
 class PostList extends Component
@@ -41,10 +42,13 @@ class PostList extends Component
 							title={post.title} 
 							body={post.body}
 							user_id={post.user_id}
-							clickDelete={this.handleDelete}
-							clickUpdate={this.handleUpdate}
 							showControls={this.state.showControls}
-						/>
+						>
+							<PostControls
+								clickDelete={ (e) => this.handleDelete(e, post.id, post.title, post.user_id) }
+								clickUpdate={(e) => this.handleUpdate(e, post.id)}
+							/>
+						</PostListItem>
 					))}
 				</ul>
 			</div>
