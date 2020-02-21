@@ -19,7 +19,8 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+				"no-null"
     ],
     "rules": {
         "indent": [
@@ -66,7 +67,8 @@
 				],
 				"react/no-unused-prop-types": [
 					"warn"
-				]
+				],
+				"no-null/no-null": 2
     },
 		"parser": "babel-eslint"
 }

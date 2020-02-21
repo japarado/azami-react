@@ -3,9 +3,9 @@ dependencies:
   '@testing-library/react': 9.4.0_react-dom@16.12.0+react@16.12.0
   '@testing-library/user-event': 7.2.1
   axios: 0.19.2
-  bootstrap: 4.4.1_jquery@3.4.1+popper.js@1.16.1
+  bootstrap: 4.4.1_jquery@3.4.1
+  eslint-plugin-no-null: 1.0.2_eslint@6.8.0
   jquery: 3.4.1
-  popper.js: 1.16.1
   prop-types: 15.7.2
   qs: 6.9.1
   react: 16.12.0
@@ -2461,10 +2461,9 @@ packages:
     dev: false
     resolution:
       integrity: sha1-aN/1++YMUes3cl6p4+0xDcwed24=
-  /bootstrap/4.4.1_jquery@3.4.1+popper.js@1.16.1:
+  /bootstrap/4.4.1_jquery@3.4.1:
     dependencies:
       jquery: 3.4.1
-      popper.js: 1.16.1
     dev: false
     engines:
       node: '>=6'
@@ -4117,6 +4116,16 @@ packages:
       eslint: ^3 || ^4 || ^5 || ^6
     resolution:
       integrity: sha512-CawzfGt9w83tyuVekn0GDPU9ytYtxyxyFZ3aSWROmnRRFQFT2BiPJd7jvRdzNDi6oLWaS2asMeYSNMjWTV4eNg==
+  /eslint-plugin-no-null/1.0.2_eslint@6.8.0:
+    dependencies:
+      eslint: 6.8.0
+    dev: false
+    engines:
+      node: '>=5.0.0'
+    peerDependencies:
+      eslint: '>=3.0.0'
+    resolution:
+      integrity: sha1-EjaoEjkTkKGHetQAfCbnRTQclR8=
   /eslint-plugin-react-hooks/1.7.0_eslint@6.8.0:
     dependencies:
       eslint: 6.8.0
@@ -7874,11 +7883,6 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-ZcMGn/xF/fCOq+9kWMP9vVVxjIkMCja72oy3lziR7UHy0hHFZ57iVpQ71OtveVbmzeCmphBg8pxNdk/hlK99aQ==
-  /popper.js/1.16.1:
-    deprecated: 'You can find the new Popper v2 at @popperjs/core, this package is dedicated to the legacy v1'
-    dev: false
-    resolution:
-      integrity: sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
   /portfinder/1.0.25:
     dependencies:
       async: 2.6.3
@@ -11315,9 +11319,9 @@ specifiers:
   babel-eslint: ^10.0.3
   bootstrap: ^4.4.1
   eslint: ^6.8.0
+  eslint-plugin-no-null: ^1.0.2
   eslint-plugin-react: ^7.18.3
   jquery: ^3.4.1
-  popper.js: ^1.16.1
   prop-types: ^15.7.2
   qs: ^6.9.1
   react: ^16.12.0
