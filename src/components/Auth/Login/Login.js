@@ -1,29 +1,46 @@
 import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 
 const Login = (props) => 
 {
-	console.log("Mounting login comp")
+	console.log("Mounting login comp");
 	const [email, setEmail] = useState("person@site.com");
 	const [password, setPassword] = useState("password");
 	return(
 		<Fragment>
+
 			<div className="form-group">
-				<input type="email" className="form-control" id="email" name="email" placeholder="Email" value={ email } onChange={ (e) => setEmail(e.target.value) }/>
+				<input type="email"
+					className="form-control"
+					id="email"
+					name="email"
+					placeholder="Email"
+					value={ email }
+					onChange={ (e) => setEmail(e.target.value) }/>
 			</div>
+
 			<div className="form-group">
-				<input type="password" className="form-control" id="password" name="password" placeholder="Password" value={ password } onChange={ (e) => setPassword(e.target.value) }/>
+				<input type="password"
+					className="form-control"
+					id="password"
+					name="password"
+					placeholder="Password"
+					value={ password }
+					onChange={ (e) => setPassword(e.target.value) }/>
 			</div>
+
 			<div className="form-group">
-				<button className="form-control btn btn-primary" onClick={ (e) => props.submit(e, email, password) }>Log in</button>
+				<button className="form-control btn btn-primary"
+					onClick={ async () => props.submit(email, password, props.history)}>Log in</button>
 			</div>
 		</Fragment>
 	);
 };
 
 Login.propTypes = {
+	history: PropTypes.object,
 	submit: PropTypes.func,
 };
 
-export default Login;
+export default withRouter(Login);

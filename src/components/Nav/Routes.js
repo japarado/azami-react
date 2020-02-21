@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "../../pages/Home/Home";
 import MyPosts from "../../pages/MyPosts/MyPosts";
-import AuthPanel from "../Auth/AuthPanel";
+import LoginPage from "../../pages/LoginPage/LoginPage";
 
 const Routes = (props) => 
 {
@@ -17,10 +17,10 @@ const Routes = (props) =>
 				component={ MyPosts }/>
 			<Route exact
 				path="/login"
-				render={ () => <AuthPanel handleLogin={ props.handleLogin } isAuth={ props.isAuth }/> }/>
+				render={ () => <LoginPage/> }/>
 			<Route exact
 				path="/register"
-				render={ () => <AuthPanel handleRegister={ props.handleRegister } isAuth={ props.isAuth }/> }/>
+				render={ () => <LoginPage/> }/>
 
 			<Redirect to="/"/>
 		</Switch>

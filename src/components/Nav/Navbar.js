@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
-import { AuthService } from "../../services/ServiceIndex";
 
 import NavLinkGroup from "./NavbarLinks/NavLinkGroup";
 import UniversalNavLink from "./NavbarLinks/UniversalNavLink";
 import GuestNavLink from "./NavbarLinks/GuestNavLink";
 import PrivateNavLink from "./NavbarLinks/PrivateNavLink";
+
+import { withRouter } from "react-router-dom";
 
 const Navbar = (props) => 
 {
@@ -56,7 +57,8 @@ const Navbar = (props) =>
 					</GuestNavLink>
 
 					<PrivateNavLink>
-						<button className="btn btn-danger" onClick={ props.handleLogout }>Log out</button>
+						<button className="btn btn-danger"
+							onClick={ () => props.handleLogout(props.history) }>Log out</button>
 						{/*<NavLink activeClassName="active"
 							className="btn btn-outline-danger text-white mx-1 mb-2"
 							to="/"
@@ -74,4 +76,4 @@ Navbar.propTypes = {
 	handleLogout: PropTypes.func
 };
 
-export default Navbar;
+export default withRouter(Navbar);

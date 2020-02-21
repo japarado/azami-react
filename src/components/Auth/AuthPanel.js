@@ -11,22 +11,24 @@ const AuthPanel = (props) =>
 
 	return(
 		<Fragment>
-			<div className="d-flex justify-content-center">
-				<ul className="nav nav-pills">
-					<li className="nav-item">
-						<NavLink activeClassName="active" className="nav-link" to="/login">Log in</NavLink>
+			<div>
+				<ul className="nav nav-pills d-flex">
+					<li className="nav-item flex-fill">
+						<NavLink activeClassName="active"
+							className="nav-link text-center"
+							to="/login">Log in</NavLink>
 					</li>
-					<li className="nav-item">
-						<NavLink activeClassName="active" className="nav-link" to="/register">Register</NavLink>
+					<li className="nav-item flex-fill">
+						<NavLink activeClassName="active"
+							className="nav-link  text-center"
+							to="/register">Register</NavLink>
 					</li>
 				</ul>
 			</div>
 
-			<div className="mt-4">
-				<div className="row">
-					<div className="col-md-2 offset-md-5">
-						{ componentToRender }
-					</div>
+			<div className="row mt-4">
+				<div className="flex-fill">
+					{ componentToRender }
 				</div>
 			</div>
 		</Fragment>

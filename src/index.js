@@ -11,11 +11,11 @@ import "bootstrap/dist/js/bootstrap.bundle.js";
 
 
 ReactDOM.render(
-	<AuthContextProvider>
-		<Router>
+	<Router>
+		<AuthContextProvider>
 			<App />
-		</Router>
-	</AuthContextProvider>,
+		</AuthContextProvider>
+	</Router>,
 	document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change

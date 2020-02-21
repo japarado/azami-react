@@ -11,48 +11,14 @@ class PostList extends Component
 		showModal: false,
 		
 		// Strictly for modal use 
-		modalTitle: null,
-		modalBody: null,
+		modalTitle: undefined,
+		modalBody: undefined,
 
 		// Post ID slated for a delete/update
-		postId: null,
+		postId: undefined,
 
 		// Should the Update/Delete controls be shown?
 		showPostControls: false
-	}
-
-	render()
-	{
-		return(
-			<div>
-				<Modal 
-					title={ this.state.modalTitle }
-					body={ this.state.modalBody }
-					show={ this.state.showModal }
-					dismiss={ this.handleModalDismiss }
-					confirm={ (_) => this.confirmDeleteWrapper(_, this.state.postId) }
-				>
-					<h1>Confirmation</h1>
-				</Modal>
-				<ul className="list-group">
-					{this.props.posts.map((post) => (
-						<PostListItem
-							key={post.id}
-							id={post.id}
-							title={post.title} 
-							body={post.body}
-							user_id={post.user_id}
-							showControls={this.state.showControls}
-						>
-							<PostControls
-								clickDelete={ (e) => this.handleDelete(e, post.id, post.title, post.user_id) }
-								clickUpdate={(e) => this.handleUpdate(e, post.id)}
-							/>
-						</PostListItem>
-					))}
-				</ul>
-			</div>
-		);
 	}
 
 	// Event handlers
@@ -90,6 +56,40 @@ class PostList extends Component
 	{
 		this.props.confirmDelete(_, postId);
 		this.setState({ showModal: false });
+	}
+
+	render()
+	{
+		return(
+			<div>
+				<Modal 
+					title={ this.state.modalTitle }
+					body={ this.state.modalBody }
+					show={ this.state.showModal }
+					dismiss={ this.handleModalDismiss }
+					confirm={ (_) => this.confirmDeleteWrapper(_, this.state.postId) }
+				>
+					<h1>Confirmation</h1>
+				</Modal>
+				<ul className="list-group">
+					{this.props.posts.map((post) => (
+						<PostListItem
+							key={post.id}
+							id={post.id}
+							title={post.title} 
+							body={post.body}
+							user_id={post.user_id}
+							showControls={this.state.showControls}
+						>
+							<PostControls
+								clickDelete={ (e) => this.handleDelete(e, post.id, post.title, post.user_id) }
+								clickUpdate={(e) => this.handleUpdate(e, post.id)}
+							/>
+						</PostListItem>
+					))}
+				</ul>
+			</div>
+		);
 	}
 }
 

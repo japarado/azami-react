@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { AuthService, PostService } from "../../services/ServiceIndex";
+import { PostService } from "../../services/ServiceIndex";
 import PostList from "../../components/Post/PostList";
-import { apiservice } from "../../utils";
+import UniversalPage from "../../components/Pages/UniversalPage";
 
 class Home extends Component 
 {
@@ -19,12 +19,14 @@ class Home extends Component
 	render()
 	{
 		return(
-			<div className="row">
-				<div className="col-md-3">
-					<PostList posts={ this.state.posts }
-						confirmDelete={ this.handleDelete }/>
+			<UniversalPage>
+				<div className="row">
+					<div className="col-md-3">
+						<PostList posts={ this.state.posts }
+							confirmDelete={ this.handleDelete }/>
+					</div>
 				</div>
-			</div>
+			</UniversalPage>
 		);
 	}
 

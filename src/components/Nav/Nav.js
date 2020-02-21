@@ -2,11 +2,25 @@ import React from "react";
 import PropTypes from "prop-types";
 import Navbar from "./Navbar";
 
+import { AuthContextConsumer } from "../../contexts/AuthContextProvider";
+
 const Nav = (props) =>
 {
 	return(
 		<div className="mb-3">
-			<Navbar isAuth={ props.isAuth } handleLogout={ props.handleLogout }/>
+
+			<AuthContextConsumer>
+				{(context) => 
+				{
+					return(
+						<Navbar 
+							isAuth={ context.isAuth }
+							handleLogout={ context.handleLogout }
+						/>
+					);
+				}}
+			</AuthContextConsumer>
+
 		</div>
 	);
 };
