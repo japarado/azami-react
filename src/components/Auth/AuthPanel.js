@@ -7,9 +7,8 @@ import { withRouter } from "react-router-dom";
 
 const AuthPanel = (props) => 
 {
-	console.log("AUTH PANEL PROPS");
-	console.log(props)
 	const componentToRender = getComponentToRender(props.location.pathname, props);
+
 	return(
 		<Fragment>
 			<div className="d-flex justify-content-center">

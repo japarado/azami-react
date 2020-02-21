@@ -29,9 +29,6 @@ apiservice.interceptors.response.use((res) =>
 	return res; 
 }, (err) => 
 {
-	console.log("IN UTILS")
-	console.log(err)
-	console.log("END UTILS")
 	const errorResponse = {
 		status: err.response.status,
 		statusText: err.response.statusText,
@@ -39,71 +36,9 @@ apiservice.interceptors.response.use((res) =>
 		data: { _: null }
 	};
 	return Promise.reject(errorResponse); 
-	// console.log(err.response.status);
-	// console.log(err.response.data);
-	// console.log(err.response);
-	// return Promise.reject(err);
 });
 
 // App-level localStorage
-
-// Auth utilities
-/**
- * Stores user details in localStorage
- *
- * @param {object} userDetails Object representing a user 
- * @returns {void}
- */
-function saveAuthUser(userDetails)
-{
-	localStorage.setItem("authUser", JSON.stringify(userDetails));
-	localStorage.setItem("isAuth", true);
-}
-
-/**
- * Retrieves the current auth user 
- *
- * @param {null}
- * @returns {object} - The user info stored in localStorage
- */ 
-function getAuthUser()
-{
-	return JSON.parse(localStorage.getItem("authUser"));
-}
-
-/**
- * Determines whether user is currently logged in.
- *
- * @param {void} void
- * @returns {boolean} Is user logged in? 
- */ 
-function isLoggedIn()
-{
-	const entryValue = localStorage.getItem("isAuth");
-	if(entryValue)
-	{
-		if(entryValue.toString().toLowerCase() === "true") 
-		{
-			return true;
-		}
-	}
-	else 
-	{
-		return false;
-	}
-}
-
-/** 
- * Deletes the "isAuth" and "authUser" records from localStorage 
- * @returns { void } <Does not return anything>
- */
-function deleteAuthUser()
-{
-	// localStorage.clear();
-	localStorage.removeItem("isAuth");
-	localStorage.removeItem("authUser");
-}
-
 /**
  * Outputs a boolean value that dictates whether the given link should show  
  *
@@ -139,4 +74,4 @@ function sleep(ms)
 	return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export { apiservice, saveAuthUser, getAuthUser, isLoggedIn, shouldShowLink, isNull, sleep, deleteAuthUser };
+export { apiservice,  shouldShowLink, isNull, sleep};
