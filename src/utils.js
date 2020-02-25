@@ -1,11 +1,11 @@
 import axios from "axios";
 import qs from "qs";
-import UniversalNavLink from "./components/Nav/NavbarLinks/UniversalNavLink";
-import GuestNavLink from "./components/Nav/NavbarLinks/GuestNavLink";
-import PrivateNavLink from "./components/Nav/NavbarLinks/PrivateNavLink";
+// import UniversalNavLink from "./components/Nav/NavbarLinks/UniversalNavLink";
+// import GuestNavLink from "./components/Nav/NavbarLinks/GuestNavLink";
+// import PrivateNavLink from "./components/Nav/NavbarLinks/PrivateNavLink";
 
 // Axios defaults
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 const apiservice = axios.create({
 	baseURL: process.env.REACT_APP_PRIMARY_BACKEND_URL,
 	withCredentials: true,
@@ -49,18 +49,7 @@ apiservice.interceptors.response.use((res) =>
  */
 function shouldShowLink(navlink, isAuth) 
 {
-	return (navlink.type === PrivateNavLink && isAuth) || (navlink.type === GuestNavLink && !isAuth) || (navlink.type === UniversalNavLink); 
-}
-
-/**
- * Returns true if the supplied parameter is undefined or null
- *
- * @param {any} someVar - A variable to be tested if it is defined
- * @returns {bool} - Whether the input is defined or not
- */
-function isNull(someVar)
-{
-	return typeof someVar === "undefined" || someVar === null;
+	// return (navlink.type === PrivateNavLink && isAuth) || (navlink.type === GuestNavLink && !isAuth) || (navlink.type === UniversalNavLink); 
 }
 
 /**
@@ -74,4 +63,4 @@ function sleep(ms)
 	return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export { apiservice,  shouldShowLink, isNull, sleep};
+export { apiservice,  shouldShowLink, sleep };

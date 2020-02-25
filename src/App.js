@@ -1,28 +1,30 @@
-import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
-
-import Nav from "./components/Nav/Nav";
-import Routes from "./components/Nav/Routes";
-import { withRouter } from "react-router-dom";
-
-import { AuthContextConsumer } from "./contexts/AuthContextProvider";
+import React from "react";
+import NavigationBar from "./components/Nav/NavigationBar/NavigationBar";
+import { AuthContextProvider } from "./ctx/AuthContextProvider";
+import Backdrop from "./components/UI/Backdrop/Backdrop";
+import Posts from "./components/Posts/Posts";
+import Routes from "./pages/Routes";
 
 const App = () =>
 {
-	return (
-		<Fragment>
-			<Nav/>
-			<main>
-				<div className="container-fluid">
-					<Routes/>
-				</div>
-			</main>
-		</Fragment>
+	return(
+		<>
+			<div className="mb-5">
+				<NavigationBar/>
+			</div>
+			<div>
+				<Routes/>
+			</div>
+		</>
 	);
+	// return (
+	// 	<AuthContextProvider>
+	// 		<NavigationBar/>
+	// 	</AuthContextProvider>
+	// );
 };
 
 App.propTypes = {
-	history: PropTypes.object
 };
 
 export default App;

@@ -4,47 +4,44 @@ class PostService
 {
 	static async all()
 	{
-		let posts = [];
+		let res;
 		try 
 		{
-			const res = await apiservice.get("/posts/all", { withCredentials: true });
-			posts = res.data.posts;
+			res = await apiservice.get("/posts/all", { withCredentials: true });
 		}
 		catch(e)
 		{
-			// console.log(e);
+			res = e;
 		}
-		return posts;
+		return res;
 	}
 
 	static async index()
 	{
-		let posts = [];
+		let res;
 		try 
 		{
-			const res = await apiservice.get("/posts");
-			posts = res.data.posts;
+			res = await apiservice.get("/posts");
 		}
 		catch(e)
 		{
-			console.error(e);
+			res = e;
 		}
-		return posts;
+		return res;
 	}
 
 	static async destroy(id)
 	{
-		let post = {};
+		let res;
 		try
 		{
-			const res = await apiservice.delete(`/posts/${id}`,);
-			post = res.data.post;
+			res = await apiservice.delete(`/posts/${id}`,);
 		}
 		catch(e)
 		{
-			console.error(e);
+			res = e;
 		}
-		return post;
+		return res;
 	}
 }
 

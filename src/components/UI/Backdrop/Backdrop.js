@@ -1,13 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import "./Backdrop.css";
 
-const Backdrop = (props) => props.show ? <div className="Backdrop" onClick={ props.click }>{ props.children }</div> : null;
+const Backdrop = (props) => 
+{
+	return(
+		<div className="backdrop position-fixed h-100 w-100">
+			{ props.children }
+		</div>
+	);
+};
 
-Backdrop.propTypes = {
-	show: PropTypes.bool,
-	click: PropTypes.func,
+
+Backdrop.propTypes =  {
+	children: PropTypes.oneOfType([
+		PropTypes.node,
+		PropTypes.arrayOf(PropTypes.node)
+	])
 };
 
 export default Backdrop;
