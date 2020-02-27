@@ -8,6 +8,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {AuthContextProvider} from "./ctx/AuthContextProvider";
 
+
 ReactDOM.render(
 	<Router>
 		<AuthContextProvider>

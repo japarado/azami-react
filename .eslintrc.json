@@ -20,7 +20,8 @@
     },
     "plugins": [
         "react",
-				"no-null"
+        "no-null",
+        "react-hooks"
     ],
     "rules": {
         "indent": [
@@ -55,20 +56,30 @@
         "prefer-arrow-callback": [
             "warn"
         ],
-				"valid-jsdoc": [
-					"warn"
-				],
-				"object-curly-spacing": [
-					"warn",
-					"always"
-				],
-				"react/jsx-max-props-per-line":[
-					"warn"
-				],
-				"react/no-unused-prop-types": [
-					"warn"
-				],
-				"no-null/no-null": 2
+        "valid-jsdoc": [
+            "warn"
+        ],
+        "object-curly-spacing": [
+            "warn",
+            "always"
+        ],
+        "react/jsx-max-props-per-line": [
+            "warn"
+        ],
+        "react/no-unused-prop-types": [
+            "warn"
+        ],
+        "react/jsx-first-prop-new-line": [
+            "warn",
+            "multiline"
+        ],
+        "react/jsx-closing-bracket-location": [
+            "warn",
+            "tag-aligned"
+        ],
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "no-null/no-null": 2
     },
-		"parser": "babel-eslint"
+    "parser": "babel-eslint"
 }

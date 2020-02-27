@@ -1,28 +1,28 @@
 import React from "react";
-import NavigationBar from "./components/Nav/NavigationBar/NavigationBar";
-import { AuthContextProvider } from "./ctx/AuthContextProvider";
-import Backdrop from "./components/UI/Backdrop/Backdrop";
-import Posts from "./components/Posts/Posts";
-import Routes from "./pages/Routes";
+import Nav from "./components/Nav/Nav";
+import { AuthContextProvider, AuthContextConsumer } from "./ctx/AuthContextProvider";
+import Backdrop from "./components/UI/Backdrop";
+import Routes from "./Routes/Routes";
 
 const App = () =>
 {
 	return(
 		<>
-			<div className="mb-5">
-				<NavigationBar/>
-			</div>
-			<div>
-				<Routes/>
-			</div>
+			<AuthContextConsumer>
+				{(ctx) => 
+				{
+					return(
+						<>
+							<Nav/>
+							<Routes/>
+						</>
+					);
+				}}
+			</AuthContextConsumer>
 		</>
 	);
-	// return (
-	// 	<AuthContextProvider>
-	// 		<NavigationBar/>
-	// 	</AuthContextProvider>
-	// );
 };
+
 
 App.propTypes = {
 };
