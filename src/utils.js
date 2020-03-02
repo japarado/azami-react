@@ -8,6 +8,7 @@ import qs from "qs";
 // axios.defaults.withCredentials = true;
 const apiservice = axios.create({
 	baseURL: process.env.REACT_APP_PRIMARY_BACKEND_URL,
+	timeout: 2000,
 	withCredentials: true,
 	headers: {
 		"Content-Type": "application/x-www-form-urlencoded"
